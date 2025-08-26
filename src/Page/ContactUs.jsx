@@ -35,7 +35,7 @@ const ContactUs = () => (
     </Helmet> */}
 
     <div className='w-full relative bg-black'>
-      <div className="relative isolate min-h-screen flex items-center justify-center py-16">
+      <div className="relative isolate min-h-screen flex items-center justify-center py-24">
         {/* Blurred Background Images */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -bottom-72 w-full h-full bg-[#512feb80] opacity-30 blur-3xl [clip-path:ellipse(95%_60%_at_10%_80%)]" />
