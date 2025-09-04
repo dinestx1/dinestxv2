@@ -157,44 +157,56 @@ function Floating() {
 
   return (
     <>
-      <div className="fixed z-10 bottom-8 right-5 lg:bottom-10 lg:right-10 p-1 flex items-end justify-end h-28 ">
-        <button
-          onMouseEnter={() => setIsHovered1(true)}
-          onMouseLeave={() => setIsHovered1(false)}
-          onClick={handleClick}
-          className="relative overflow-hidden rounded-lg bg-blue-700 py-2 text-[12px] font-semibold text-white shadow-sm h-10 w-[112px] lg:w-32 md:w-32"
-        >
-          <div className="relative h-full w-full">
-            {/* First Text (Default) */}
-            <motion.span
-              className="absolute inset-0 flex items-center justify-center font-outfit font-normal whitespace-nowrap"
-              initial={{ y: 0, opacity: 1 }}
-              animate={{
-                y: isHovered1 ? -20 : 0,
-                opacity: isHovered1 ? 0 : 1,
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              Build Your Own
-              <ArrowUpRight className="w-[14px] ml-1" />
-            </motion.span>
+    <div className="fixed z-10 bottom-8 right-5 lg:bottom-10 lg:right-10 p-1 flex flex-col items-end justify-end">
+  {/* Video added above the button */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="w-[112px] lg:w-32 md:w-32 rounded-lg"
+  >
+    <source src="fox.webm" type="video/webm" />
+  </video>
 
-            {/* Second Text (Hover) */}
-            <motion.span
-              className="absolute inset-0 flex items-center justify-center font-outfit font-normal whitespace-nowrap"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{
-                y: isHovered1 ? 0 : 20,
-                opacity: isHovered1 ? 1 : 0,
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              Build Your Own
-              <ArrowUpRight className="rotate-45 w-[14px] ml-1" />
-            </motion.span>
-          </div>
-        </button>
-      </div>
+  {/* Existing Button */}
+  <button
+    onMouseEnter={() => setIsHovered1(true)}
+    onMouseLeave={() => setIsHovered1(false)}
+    onClick={handleClick}
+    className="relative overflow-hidden rounded-lg bg-blue-700 py-2 text-[12px] font-semibold text-white shadow-sm h-10 w-[112px] lg:w-32 md:w-32"
+  >
+    <div className="relative h-full w-full">
+      {/* First Text (Default) */}
+      <motion.span
+        className="absolute inset-0 flex items-center justify-center font-outfit font-normal whitespace-nowrap"
+        initial={{ y: 0, opacity: 1 }}
+        animate={{
+          y: isHovered1 ? -20 : 0,
+          opacity: isHovered1 ? 0 : 1,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        Build Your Own
+        <ArrowUpRight className="w-[14px] ml-1" />
+      </motion.span>
+
+      {/* Second Text (Hover) */}
+      <motion.span
+        className="absolute inset-0 flex items-center justify-center font-outfit font-normal whitespace-nowrap"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{
+          y: isHovered1 ? 0 : 20,
+          opacity: isHovered1 ? 1 : 0,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        Build Your Own
+        <ArrowUpRight className="rotate-45 w-[14px] ml-1" />
+      </motion.span>
+    </div>
+  </button>
+</div>
 
 
       {/* Modal (unchanged) */}

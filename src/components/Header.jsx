@@ -160,13 +160,23 @@ function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 lg:top-6 z-40 mx-auto w-full md:w-[80%] bg-indigo-700/10 py-3 shadow backdrop-blur-lg md:rounded-3xl lg:max-w-screen-lg">
+      <header className="fixed inset-x-0 top-0 lg:top-6 z-40 mx-auto w-full md:w-[80%] bg-indigo-50/5 py-3 shadow backdrop-blur-lg md:rounded-3xl lg:max-w-screen-lg">
         <div className="px-4">
           <div className="flex items-center justify-between">
             <div className="flex shrink-0">
               <NavLink to="/" className="flex items-center">
-                <img className="h-10 w-auto object-cover" src={Logo} alt="Logo" />
-                <p className="font-museo text-white ml-3 text-xl font-semibold">dinestx</p>
+    <img
+  className="h-10 w-auto object-cover drop-shadow-[0_4px_8px_rgba(67,56,202,0.5)]"
+  src={Logo}
+  alt="Logo"
+/>
+
+
+               <div className="ml-3">
+  <p className="font-museo text-white text-xl font-semibold">Dinestx</p>
+  <p className="text-gray-50 font-poppins text-[9px] font-light -mt-1">Your Digital Nest</p>
+</div>
+               
               </NavLink>
             </div>
 

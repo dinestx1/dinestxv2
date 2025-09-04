@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import {Suspense, useEffect, useState,useRef } from 'react'
 import Reveal from './Reveal';
 import { Canvas, useFrame } from '@react-three/fiber';
-
+import {Cloud} from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -93,10 +93,25 @@ function Services() {
   }, []);
 
 
-  function getStart() {
-    window.open('https://form2mail.dinestx.com', '_blank', 'noopener,noreferrer');
-  }
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+    }),
+  };
 
+  const techs = [
+    "React",
+    "Next.js",
+    "Flutter",
+    "Node.js",
+    "TypeScript",
+    "Tailwind",
+    "Python",
+    "AWS",
+  ];
 
   const features = [
     {
@@ -238,278 +253,248 @@ function Services() {
 
 
         {/* 2nd Section */}
+   <section className="relative overflow-hidden py-24">
+  {/* Animated Indigo Background */}
+  <div className="absolute inset-0 overflow-hidden opacity-20">
+    <div className="absolute -left-20 -top-20 h-96 w-96 animate-float rounded-full bg-gradient-to-br from-indigo-700 to-indigo-500 blur-[120px]" />
+    <div className="absolute -right-20 bottom-1/3 h-80 w-80 animate-float-delay rounded-full bg-gradient-to-br from-indigo-600 to-indigo-400 blur-[100px]" />
+  </div>
 
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {/* Header */}
+    <div className="text-center max-w-4xl mx-auto mb-20">
+      <span className="inline-flex items-center rounded-full bg-indigo-600/20 px-4 py-1.5 text-xs font-medium text-indigo-300 ring-1 ring-inset ring-indigo-500/40 mb-6">
+        <Sparkles className="mr-2 h-4 w-4" />
+        Development Excellence
+      </span>
+      <h2 className="text-5xl font-bold tracking-tight sm:text-6xl text-white">
+        <span className="animate-gradient bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-100 to-indigo-600">
+          Scalable Digital Solutions
+        </span>
+      </h2>
+      <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        Building <span className="text-indigo-300">robust platforms</span> and <span className="text-indigo-200">intelligent systems</span> 
+        that accelerate growth, streamline operations, and deliver impact.
+      </p>
+    </div>
 
-        {/* 3rd Section */}
-        <section className="relative overflow-hidden  from-indigo-900  to-black py-24">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden opacity-20">
-            <div className="absolute -left-20 -top-20 h-96 w-96 animate-float rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 blur-[100px]"></div>
-            <div className="absolute -right-20 bottom-1/3 h-80 w-80 animate-float-delay rounded-full bg-gradient-to-br from-indigo-400 to-blue-500 blur-[90px]"></div>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Header with animated gradient */}
-            <div className="text-center max-w-4xl mx-auto mb-20">
-              <span className="inline-flex items-center rounded-full bg-indigo-900/50 px-4 py-1.5 text-xs font-medium text-indigo-300 ring-1 ring-inset ring-indigo-700/40 mb-6">
-                <Sparkles className="mr-2 h-4 w-4" />
-                Digital Excellence
-              </span>
-              <h2 className="text-5xl font-bold tracking-tight sm:text-6xl">
-                <span className=" text-white animate-gradient">
-                  Transformative Solutions
-                </span>
-              </h2>
-              <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                We architect digital experiences that <span className="text-indigo-300">propel businesses forward</span> through <span className="text-cyan-300">innovation</span> and <span className="text-purple-300">technical precision</span>.
-              </p>
+    {/* Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Web & App Development */}
+      <div className="group perspective-1000 h-full">
+        <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-indigo-400/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+              <Code2 className="h-7 w-7" />
             </div>
-
-            {/* 3D grid with floating cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Customization Service */}
-              <div className="group perspective-1000 h-full">
-                <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
-                    <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-purple-500/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:from-indigo-600/30 group-hover:to-purple-500/30">
-                      <Sparkles className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Customization Service</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Bespoke digital solutions crafted to your exact specifications, blending innovation with your unique business DNA.
-                    </p>
-                    <div className="mt-8 pt-6 border-t border-gray-700/50 group-hover:border-indigo-400/30 transition-colors duration-300">
-                      <span className="inline-flex items-center text-sm font-medium text-indigo-300 group-hover:text-indigo-200">
-                        Explore possibilities
-                        {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 -z-10 h-48 w-48 rounded-full bg-indigo-500/10 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-indigo-600/20" />
-                </div>
-              </div>
-
-              {/* Web & App Development */}
-              <div className="group perspective-1000 h-full">
-                <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-blue-400/50 transition-all duration-300 shadow-xl hover:shadow-blue-500/10">
-                    <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-blue-600/20 to-cyan-500/20 text-blue-300 shadow-lg shadow-blue-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:from-blue-600/30 group-hover:to-cyan-500/30">
-                      <Code2 className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Web & App Development</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Cutting-edge digital experiences built with modern architectures, designed to captivate and convert your audience.
-                    </p>
-                    <div className="mt-8 pt-6 border-t border-gray-700/50 group-hover:border-blue-400/30 transition-colors duration-300">
-                      <span className="inline-flex items-center text-sm font-medium text-blue-300 group-hover:text-blue-200">
-                        See our work
-                        {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 -z-10 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-blue-600/20" />
-                </div>
-              </div>
-
-              {/* Supply Chain Optimization */}
-              <div className="group perspective-1000 h-full">
-                <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-emerald-400/50 transition-all duration-300 shadow-xl hover:shadow-emerald-500/10">
-                    <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-emerald-600/20 to-teal-500/20 text-emerald-300 shadow-lg shadow-emerald-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:from-emerald-600/30 group-hover:to-teal-500/30">
-                      <Workflow className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Supply Chain Optimization</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Intelligent systems that streamline your logistics, reduce bottlenecks, and maximize operational efficiency.
-                    </p>
-                    <div className="mt-8 pt-6 border-t border-gray-700/50 group-hover:border-emerald-400/30 transition-colors duration-300">
-                      <span className="inline-flex items-center text-sm font-medium text-emerald-300 group-hover:text-emerald-200">
-                        Optimize now
-                        {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 -z-10 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-emerald-600/20" />
-                </div>
-              </div>
-
-              {/* Campus Intelligence */}
-              <div className="group perspective-1000 h-full">
-                <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-amber-400/50 transition-all duration-300 shadow-xl hover:shadow-amber-500/10">
-                    <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-amber-600/20 to-orange-500/20 text-amber-300 shadow-lg shadow-amber-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:from-amber-600/30 group-hover:to-orange-500/30">
-                      <School className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Campus Intelligence</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Next-generation education management systems that unify administration, learning, and campus operations.
-                    </p>
-                    <div className="mt-8 pt-6 border-t border-gray-700/50 group-hover:border-amber-400/30 transition-colors duration-300">
-                      <span className="inline-flex items-center text-sm font-medium text-amber-300 group-hover:text-amber-200">
-                        Learn more
-                        {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 -z-10 h-48 w-48 rounded-full bg-amber-500/10 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-amber-600/20" />
-                </div>
-              </div>
-
-              {/* Engagement CRM */}
-              <div className="group perspective-1000 h-full">
-                <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-rose-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-pink-400/50 transition-all duration-300 shadow-xl hover:shadow-pink-500/10">
-                    <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-pink-600/20 to-rose-500/20 text-pink-300 shadow-lg shadow-pink-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:from-pink-600/30 group-hover:to-rose-500/30">
-                      <MessageSquareMore className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Engagement CRM</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Relationship platforms that transform customer interactions into meaningful, data-driven engagements.
-                    </p>
-                    <div className="mt-8 pt-6 border-t border-gray-700/50 group-hover:border-pink-400/30 transition-colors duration-300">
-                      <span className="inline-flex items-center text-sm font-medium text-pink-300 group-hover:text-pink-200">
-                        Connect better
-                        {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 -z-10 h-48 w-48 rounded-full bg-pink-500/10 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-pink-600/20" />
-                </div>
-              </div>
-
-              {/* Immersive Learning */}
-              <div className="group perspective-1000 h-full">
-                <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-fuchsia-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-violet-400/50 transition-all duration-300 shadow-xl hover:shadow-violet-500/10">
-                    <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-violet-600/20 to-fuchsia-500/20 text-violet-300 shadow-lg shadow-violet-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:from-violet-600/30 group-hover:to-fuchsia-500/30">
-                      <GraduationCap className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Immersive Learning</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Dynamic eLearning ecosystems that inspire, engage, and accelerate knowledge acquisition.
-                    </p>
-                    <div className="mt-8 pt-6 border-t border-gray-700/50 group-hover:border-violet-400/30 transition-colors duration-300">
-                      <span className="inline-flex items-center text-sm font-medium text-violet-300 group-hover:text-violet-200">
-                        Start learning
-                        {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 -z-10 h-48 w-48 rounded-full bg-violet-500/10 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-violet-600/20" />
-                </div>
-              </div>
-            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">Web & App Development</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Modern, scalable applications tailored to your business needs using the latest frameworks and architectures.
+            </p>
           </div>
-        </section>
+        </div>
+      </div>
+
+      {/* CRM Development */}
+      <div className="group perspective-1000 h-full">
+        <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-indigo-400/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+              <MessageSquareMore className="h-7 w-7" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">CRM Solutions</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Powerful customer relationship platforms that enhance engagement and drive data-driven decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* UMS & LMS */}
+      <div className="group perspective-1000 h-full">
+        <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-indigo-400/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+              <GraduationCap className="h-7 w-7" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">UMS & LMS</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Complete academic management systems unifying administration, learning, and campus intelligence.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ERP Development */}
+      <div className="group perspective-1000 h-full">
+        <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-indigo-400/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+              <Workflow className="h-7 w-7" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">ERP Systems</h3>
+            <p className="text-gray-400 leading-relaxed">
+              End-to-end enterprise solutions to optimize operations, resources, and efficiency at scale.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* AI & Automation */}
+      <div className="group perspective-1000 h-full">
+        <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-indigo-400/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+              <Sparkles className="h-7 w-7" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">AI & Automation</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Intelligent automation powered by AI to streamline workflows and deliver predictive insights.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Cloud & DevOps */}
+      <div className="group perspective-1000 h-full">
+        <div className="relative h-full transform transition-all duration-700 group-hover:rotate-x-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="h-full p-8 bg-gray-800/40 backdrop-blur-lg rounded-3xl border border-gray-700 hover:border-indigo-400/50 transition-all duration-300 shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center justify-center h-16 w-16 mb-6 rounded-xl bg-gradient-to-br from-indigo-600/20 to-indigo-400/20 text-indigo-300 shadow-lg shadow-indigo-500/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+              <Cloud className="h-7 w-7" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">Cloud & DevOps</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Secure, scalable cloud infrastructures with automated CI/CD pipelines and DevOps best practices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 
         {/* 4th Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black py-24">
-          {/* Background elements (simplified) */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute left-1/4 top-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-600/20 to-indigo-600/20 blur-[120px]"></div>
-          </div>
+     <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/70 via-indigo-800/40 to-black py-28">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute left-1/3 top-1/3 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-700/60 to-indigo-900/60 blur-[120px] animate-pulse"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-blue-600/50 to-indigo-700/50 blur-[100px] animate-pulse-delay"></div>
+      </div>
 
-          <div className="container relative mx-auto px-4">
-            {/* Header (unchanged) */}
-            <div className="mb-20 text-center">
-              <span className="mb-5 inline-flex items-center rounded-full bg-gray-800/50 px-5 py-2 text-sm font-medium text-indigo-300 shadow-lg shadow-blue-500/10 ring-1 ring-indigo-500/30">
-                <Rocket className="mr-2 h-4 w-4" />
-                Digital Transformation
-              </span>
-              <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-                <span className="text-white animate-gradient">
-                  Website & App Development
-                </span>
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-xl text-gray-400">
-                We engineer <span className="text-blue-300">high-performance</span> digital experiences that convert visitors with <span className="text-purple-300">blazing speed</span>.
-              </p>
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with enhanced gradient and animation */}
+        <div className="mb-16 text-center max-w-4xl mx-auto">
+          <span className="inline-flex items-center rounded-full bg-indigo-700/30 px-5 py-2 text-sm font-semibold text-indigo-200 ring-1 ring-inset ring-indigo-600/50 mb-6 transition-all hover:bg-indigo-700/40">
+            <Rocket className="mr-2 h-5 w-5" />
+            Next-Gen Development
+          </span>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            <span className="animate-gradient bg-clip-text text-transparent bg-gradient-to-r from-indigo-100 via-indigo-300 to-indigo-500">
+              Innovative Web & App Solutions
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 leading-relaxed">
+            We build <span className="text-indigo-400 font-medium">scalable, high-performance</span> digital experiences that drive engagement and growth with <span className="text-indigo-300 font-medium">cutting-edge technology</span>.
+          </p>
+        </div>
+
+        {/* Refined card grid with enhanced hover effects */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+          {/* Custom & Responsive Designs */}
+          <div className="group relative overflow-hidden rounded-2xl border border-indigo-800/50 bg-gray-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-indigo-500/70 ">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-700/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-blue-500 text-indigo-100 shadow-md shadow-indigo-500/30 mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <Rocket className="h-6 w-6" />
             </div>
-
-            {/* Refined card grid */}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-              {/* Custom Designs */}
-              <div className="group relative overflow-hidden rounded-2xl border border-gray-800/50 bg-gray-900/50 p-8 backdrop-blur-sm transition-all hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/30 text-blue-400 transition-all group-hover:bg-blue-500/20 group-hover:text-blue-300">
-                  <Rocket className="h-6 w-6" />
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold text-white">Custom & Responsive Designs</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Tailored designs crafted to match your brand identity, ensuring flawless responsiveness across all devices.
-                </p>
-                <div className="inline-flex items-center text-sm font-medium text-blue-400 transition-all group-hover:text-blue-300">
-                  Explore designs
-                  {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                </div>
-              </div>
-
-              {/* SEO Optimization */}
-              <div className="group relative overflow-hidden rounded-2xl border border-gray-800/50 bg-gray-900/50 p-8 backdrop-blur-sm transition-all hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-purple-900/30 text-purple-400 transition-all group-hover:bg-purple-500/20 group-hover:text-purple-300">
-                  <BookmarkPlus className="h-6 w-6" />
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold text-white">SEO Optimization</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Optimized architecture and content for maximum visibility and engagement.
-                </p>
-                <div className="inline-flex items-center text-sm font-medium text-purple-400 transition-all group-hover:text-purple-300">
-                  Boost rankings
-                  {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                </div>
-              </div>
-
-              {/* Native Apps */}
-              <div className="group relative overflow-hidden rounded-2xl border border-gray-800/50 bg-gray-900/50 p-8 backdrop-blur-sm transition-all hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-900/30 text-cyan-400 transition-all group-hover:bg-cyan-500/20 group-hover:text-cyan-300">
-                  <Smartphone className="h-6 w-6" />
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold text-white">Native & Cross-Platform Apps</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Premium mobile experiences with intuitive interfaces for iOS and Android.
-                </p>
-                <div className="inline-flex items-center text-sm font-medium text-cyan-400 transition-all group-hover:text-cyan-300">
-                  View apps
-                  {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                </div>
-              </div>
-
-              {/* Tech Stack */}
-              <div className="group relative overflow-hidden rounded-2xl border border-gray-800/50 bg-gray-900/50 p-8 backdrop-blur-sm transition-all hover:border-indigo-400/50 hover:shadow-lg hover:shadow-indigo-500/10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-indigo-900/30 text-indigo-400 transition-all group-hover:bg-indigo-500/20 group-hover:text-indigo-300">
-                  <CodeSquare className="h-6 w-6" />
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold text-white">Modern Tech Stack</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Cutting-edge technologies powering robust, scalable digital solutions.
-                </p>
-                <div className="inline-flex items-center text-sm font-medium text-indigo-400 transition-all group-hover:text-indigo-300">
-                  Our technologies
-                  {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> */}
-                </div>
-              </div>
-            </div>
-
-            {/* Tech badges (simplified) */}
-            <div className="mt-16 flex flex-wrap justify-center gap-3">
-              {['React', 'Next.js', 'Flutter', 'Node.js', 'TypeScript', 'Tailwind', 'Python', 'AWS'].map((tech) => (
-                <div
-                  key={tech}
-                  className="rounded-full bg-gray-800/50 px-4 py-2 text-sm font-medium text-gray-300 transition-all hover:bg-gray-700/50 hover:text-white"
-                >
-                  {tech}
-                </div>
-              ))}
+            <h3 className="mb-4 text-xl font-semibold text-white">Custom & Responsive Designs</h3>
+            <p className="text-gray-300 text-sm leading-relaxed mb-6">
+              Pixel-perfect, responsive designs tailored to your brand, ensuring seamless experiences across all devices.
+            </p>
+            <div className="inline-flex items-center text-sm font-medium text-indigo-400 transition-all group-hover:text-indigo-300">
+              Discover Designs
+              <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
             </div>
           </div>
-        </section>
+
+          {/* SEO & Performance Optimization */}
+          <div className="group relative overflow-hidden rounded-2xl border border-indigo-800/50 bg-gray-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-indigo-500/70 hover:shadow-2xl hover:shadow-indigo-500/20">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-700/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-500 text-indigo-100 shadow-md shadow-indigo-500/30 mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <BookmarkPlus className="h-6 w-6" />
+            </div>
+            <h3 className="mb-4 text-xl font-semibold text-white">SEO & Performance Optimization</h3>
+            <p className="text-gray-300 text-sm leading-relaxed mb-6">
+              Boost your visibility with optimized architecture and content, designed for top search rankings and speed.
+            </p>
+            <div className="inline-flex items-center text-sm font-medium text-indigo-400 transition-all group-hover:text-indigo-300">
+              Enhance Rankings
+              <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+
+          {/* Native & Cross-Platform Apps */}
+          <div className="group relative overflow-hidden rounded-2xl border border-indigo-800/50 bg-gray-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-indigo-500/70 hover:shadow-2xl hover:shadow-indigo-500/20">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-700/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-500 text-indigo-100 shadow-md shadow-indigo-500/30 mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <Smartphone className="h-6 w-6" />
+            </div>
+            <h3 className="mb-4 text-xl font-semibold text-white">Native & Cross-Platform Apps</h3>
+            <p className="text-gray-300 text-sm leading-relaxed mb-6">
+              Build engaging, high-performance mobile apps for iOS and Android with intuitive, user-centric designs.
+            </p>
+            <div className="inline-flex items-center text-sm font-medium text-indigo-400 transition-all group-hover:text-indigo-300">
+              Explore Apps
+              <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+
+          {/* Modern Tech Stack */}
+          <div className="group relative overflow-hidden rounded-2xl border border-indigo-800/50 bg-gray-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-indigo-500/70 hover:shadow-2xl hover:shadow-indigo-500/20">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-700/20 to-violet-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-violet-500 text-indigo-100 shadow-md shadow-indigo-500/30 mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <CodeSquare className="h-6 w-6" />
+            </div>
+            <h3 className="mb-4 text-xl font-semibold text-white">Modern Tech Stack</h3>
+            <p className="text-gray-300 text-sm leading-relaxed mb-6">
+              Leverage cutting-edge tools like React, Next.js, and Node.js for robust, scalable, and future-proof solutions.
+            </p>
+            <div className="inline-flex items-center text-sm font-medium text-indigo-400 transition-all group-hover:text-indigo-300">
+              Our Tech Stack
+              <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Tech badges with hover effects */}
+        <div className="mt-16 flex flex-wrap justify-center gap-4">
+          {['React', 'Next.js', 'Flutter', 'Node.js', 'TypeScript', 'Tailwind', 'Python', 'AWS'].map((tech) => (
+            <div
+              key={tech}
+              className="rounded-full bg-indigo-800/40 px-5 py-2.5 text-sm font-medium text-indigo-200 transition-all hover:bg-indigo-700/50 hover:text-indigo-100 hover:shadow-md hover:shadow-indigo-500/20"
+            >
+              {tech}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
 
 

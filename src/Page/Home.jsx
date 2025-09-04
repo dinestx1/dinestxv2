@@ -89,7 +89,7 @@ function Home() {
       plans: [
         {
           title: "Basic Starter Plan",
-          price: "₹ 9,499",
+          price: "₹ 3,999",
           sub: "Upto",
           text: "Perfect for small businesses or personal brands needing a simple, fast, and budget-friendly online presence.",
           tag: "Essentials",
@@ -112,7 +112,7 @@ function Home() {
         },
         {
           title: "Professional Growth Plan",
-          price: "₹ 25,999",
+          price: "₹ 15,999",
           sub: "Starting From",
           text: "Scalable solutions for growing businesses. Includes CMS, advanced SEO, and custom design for long-term success.",
           tag: "Growth",
@@ -166,7 +166,7 @@ function Home() {
       plans: [
         {
           title: "Basic MVP Plan",
-          price: "₹ 19,999",
+          price: "₹ 15,999",
           sub: "Starting From",
           text: "Perfect for validating your app idea with core functionality and a simple UI for early adopters.",
           tag: "Startup",
@@ -189,7 +189,7 @@ function Home() {
         },
         {
           title: "Professional Business Plan",
-          price: "₹ 37,999",
+          price: "₹ 30,999",
           sub: "Starting From",
           text: "Feature-rich native apps with custom UI/UX, analytics, and cross-platform compatibility for growing businesses.",
           tag: "Pro",
@@ -537,10 +537,14 @@ function Home() {
 
           <HoverButton
             label="API Documentation"
-            onClick={handleRedirect}
+           onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Disabled for now
+  }}
             width="w-44"
             height="h-12"
-            className="hidden bg-blue-700 mt-4 lg:flex"
+            className="hidden bg-blue-700 mt-4 lg:flex opacity-70 cursor-not-allowed"
           />
 
         </div>
@@ -552,13 +556,150 @@ function Home() {
 
         <HoverButton
           label="API Documentation"
-          onClick={handleRedirect}
+           onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Disabled for now
+  }}
           width="w-44"
           height="h-12"
-          className="bg-blue-700 mt-4 lg:hidden"
+          className="bg-blue-700 mt-4 lg:hidden opacity-70 cursor-not-allowed"
         />
       </div>
 
+
+
+      {/* Plan*/}
+      <div className="relative isolate overflow-hidden bg-black items-center justify-center flex lg:pt-24 md:pt-24 font-outfit">
+        <div className="absolute top-20 w-[80%] h-[50%] bg-[#512feb80] opacity-20 blur-3xl rounded-full pointer-events-none z-0"></div>
+        <Reveal>
+          <section className="mx-auto h-full max-w-[100vw] animate-fadeIn flex justify-center">
+            <div className="w-full max-w-screen-xl px-4 flex flex-col items-center justify-center gap-5 ">
+
+
+              {/* Tagline Section */}
+              <div className="w-full max-w-md flex justify-center">
+                <div className="inline-block border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg px-[14px] py-[6px]">
+                  <p className="text-gray-300 font-outfit text-sm text-center whitespace-nowrap">
+                    Plan
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-[16px] lg:text-[18px] ">
+                <p className="text-white font-outfit text-[20px] lg:text-[38px] pb-2">Choose Your Right Plan</p>
+                <p className="text-white font-outfit text-center text-sm lg:text-lg">Select from best plans, ensuring a perfect match.</p>
+                <p className="text-white font-outfit text-sm lg:text-lg">Customize your subscription for a seamless fit!</p>
+              </div>
+
+
+              {/* Toggle for MUltiple Plan */}
+              <div className="w-[95%] md:w-[85%] lg:w-[60%] h-[50px] border border-white/5 rounded-full bg-white/5 flex items-center justify-evenly">
+                <div className="flex flex-row justify-evenly w-full">
+                  {Object.keys(planCategories).map((key) => (
+                    <button
+                      key={key}
+                      className={` px-[10px] md:px-[60px] lg:px-[59px] py-2 md:py-3 lg:py-2 rounded-full transition-colors ${activeCategory === key
+                        ? 'bg-indigo-600 text-white text-[12px] md:text-[12px] lg:text-[16px]'
+                        : 'text-gray-300 text-[12px] md:text-[12px] lg:text-[16px] hover:text-white'
+                        }`}
+                      onClick={() => {
+                        setActiveCategory(key);
+                      }}
+                    >
+                      {planCategories[key].name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* CARD */}
+              <div className="w-full flex justify-center py-5">
+                <div className="w-full max-w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12">
+                  {planCategories[activeCategory].plans.map((card, index) => (
+                    <div
+                      key={index}
+                      className="relative bg-white/5 rounded-3xl border border-white/10 p-6 overflow-hidden text-white backdrop-blur-md shadow-lg"
+                    >
+                      {/* Blurred circle background */}
+                      <div className="absolute top-0 right-0 w-28 h-28 bg-[#512feb80] blur-3xl rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none z-0" />
+
+                      <div className="flex flex-col gap-[10px] z-10 relative">
+                        {/* Tag */}
+                        <div className={`px-[8px] py-[2px] rounded-md w-fit flex items-center justify-center ${card.tag === "Essentials" || card.tag === "Growth" || card.tag === "Startup" || card.tag === "Scale" ? "bg-indigo-600" : "bg-white"
+                          }`}>
+                          <p className={`font-outfit ${card.tag === "Essentials" || card.tag === "Growth" || card.tag === "Startup" || card.tag === "Scale" ? "text-white font-medium" : "text-indigo-600 font-medium"
+                            } text-[15px]`}>
+                            {card.tag}
+                          </p>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-lg font-semibold">{card.title}</h3>
+
+                        {/* Description */}
+                        <div className="space-y-1.5">
+                          <p className="text-sm text-gray-300 font-outfit">{card.text}</p>
+                        </div>
+
+
+                        {/* Price */}
+                        <div className="pt-3 pb-3 flex flex-col self-center items-center">
+                          <p className="text-[32px] text-gray-300 font-outfit font-bold">{card.price}</p>
+                          <p>
+                            {card.sub}
+                          </p>
+                        </div>
+
+
+                        <div className="w-[90%] h-[1px] self-center"
+                          style={{
+                            background: "linear-gradient(90deg, rgba(99,102,241,0) 0%, rgba(99,102,241,1) 50%, rgba(99,102,241,0) 100%)"
+                          }}
+                        />
+
+                        {/* Benefits list */}
+                        <ul className="space-y-3 pt-5">
+                          {card.benefits.map((benefit, i) => (
+                            <li key={i} className="flex items-start text-[16px] text-gray-300 font-outfit">
+                              <span className="mr-2 text-indigo-400">✓</span>
+                              {benefit}
+                            </li>
+                          ))}
+                        </ul>
+
+
+
+                        {card.disAdv && (
+                          <div className="animate-fadeIn">
+
+                            <ul className="space-y-3">
+                              {card.disAdv.map((item, i) => (
+                                <li key={i} className="flex text-[16px] text-gray-400 font-outfit">
+                                  <span className="mr-2 text-rose-400">
+                                    {card.tag === "Custom" ? "⚠️" : "✗"}
+                                  </span>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+
+
+                    </div>
+
+                  ))}
+                </div>
+              </div>
+
+
+
+            </div>
+          </section>
+        </Reveal>
+      </div>
 
 
       {/* SECURITY */}
@@ -620,7 +761,7 @@ function Home() {
                 onClick={handleRedirect}
                 width="w-32"
                 height="h-10"
-                className="bg-blue-700"
+                className="bg-blue-700 cursor-not-allowed opacity-70"
               />
             </div>
           </div>
@@ -858,137 +999,7 @@ function Home() {
         </Reveal>
       </div>
 
-      {/* Plan*/}
-      <div className="relative isolate overflow-hidden bg-black items-center justify-center flex lg:pt-24 md:pt-24 font-outfit">
-        <div className="absolute top-0 w-[80%] h-[50%] bg-[#512feb80] opacity-20 blur-3xl rounded-full pointer-events-none z-0"></div>
-        <Reveal>
-          <section className="mx-auto h-full max-w-[100vw] animate-fadeIn flex justify-center">
-            <div className="w-full max-w-screen-xl px-4 flex flex-col items-center justify-center gap-5 ">
 
-
-              {/* Tagline Section */}
-              <div className="w-full max-w-md flex justify-center">
-                <div className="inline-block border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg px-[14px] py-[6px]">
-                  <p className="text-gray-300 font-outfit text-sm text-center whitespace-nowrap">
-                    Plan
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center text-[16px] lg:text-[18px] ">
-                <p className="text-white font-outfit text-[20px] lg:text-[38px] pb-2">Choose Your Right Plan</p>
-                <p className="text-white font-outfit text-center text-sm lg:text-lg">Select from best plans, ensuring a perfect match.</p>
-                <p className="text-white font-outfit text-sm lg:text-lg">Customize your subscription for a seamless fit!</p>
-              </div>
-
-
-              {/* Toggle for MUltiple Plan */}
-              <div className="w-[95%] md:w-[85%] lg:w-[60%] h-[50px] border border-white/5 rounded-full bg-white/5 flex items-center justify-evenly">
-                <div className="flex flex-row justify-evenly w-full">
-                  {Object.keys(planCategories).map((key) => (
-                    <button
-                      key={key}
-                      className={` px-[10px] md:px-[60px] lg:px-[59px] py-2 md:py-3 lg:py-2 rounded-full transition-colors ${activeCategory === key
-                        ? 'bg-indigo-600 text-white text-[12px] md:text-[12px] lg:text-[16px]'
-                        : 'text-gray-300 text-[12px] md:text-[12px] lg:text-[16px] hover:text-white'
-                        }`}
-                      onClick={() => {
-                        setActiveCategory(key);
-                      }}
-                    >
-                      {planCategories[key].name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* CARD */}
-              <div className="w-full flex justify-center py-5">
-                <div className="w-full max-w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12">
-                  {planCategories[activeCategory].plans.map((card, index) => (
-                    <div
-                      key={index}
-                      className="relative bg-white/5 rounded-3xl border border-white/10 p-6 overflow-hidden text-white backdrop-blur-md shadow-lg"
-                    >
-                      {/* Blurred circle background */}
-                      <div className="absolute top-0 right-0 w-28 h-28 bg-[#512feb80] blur-3xl rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none z-0" />
-
-                      <div className="flex flex-col gap-[10px] z-10 relative">
-                        {/* Tag */}
-                        <div className={`px-[8px] py-[2px] rounded-md w-fit flex items-center justify-center ${card.tag === "Essentials" || card.tag === "Growth" || card.tag === "Startup" || card.tag === "Scale" ? "bg-indigo-600" : "bg-white"
-                          }`}>
-                          <p className={`font-outfit ${card.tag === "Essentials" || card.tag === "Growth" || card.tag === "Startup" || card.tag === "Scale" ? "text-white font-medium" : "text-indigo-600 font-medium"
-                            } text-[15px]`}>
-                            {card.tag}
-                          </p>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="text-lg font-semibold">{card.title}</h3>
-
-                        {/* Description */}
-                        <div className="space-y-1.5">
-                          <p className="text-sm text-gray-300 font-outfit">{card.text}</p>
-                        </div>
-
-
-                        {/* Price */}
-                        <div className="pt-3 pb-3 flex flex-col self-center items-center">
-                          <p className="text-[32px] text-gray-300 font-outfit font-bold">{card.price}</p>
-                          <p>
-                            {card.sub}
-                          </p>
-                        </div>
-
-
-                        <div className="w-[90%] h-[1px] self-center"
-                          style={{
-                            background: "linear-gradient(90deg, rgba(99,102,241,0) 0%, rgba(99,102,241,1) 50%, rgba(99,102,241,0) 100%)"
-                          }}
-                        />
-
-                        {/* Benefits list */}
-                        <ul className="space-y-3 pt-5">
-                          {card.benefits.map((benefit, i) => (
-                            <li key={i} className="flex items-start text-[16px] text-gray-300 font-outfit">
-                              <span className="mr-2 text-indigo-400">✓</span>
-                              {benefit}
-                            </li>
-                          ))}
-                        </ul>
-
-
-
-                        {card.disAdv && (
-                          <div className="animate-fadeIn">
-
-                            <ul className="space-y-3">
-                              {card.disAdv.map((item, i) => (
-                                <li key={i} className="flex text-[16px] text-gray-400 font-outfit">
-                                  <span className="mr-2 text-rose-400">
-                                    {card.tag === "Custom" ? "⚠️" : "✗"}
-                                  </span>
-                                  {item}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-
-
-                    </div>
-
-                  ))}
-                </div>
-              </div>
-
-
-
-            </div>
-          </section>
-        </Reveal>
-      </div>
 
 
       {/* Team */}
