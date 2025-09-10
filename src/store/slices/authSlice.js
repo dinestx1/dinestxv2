@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-// const API_URL = "https://api.ixbooking.in/api/user/";
-const API_URL = "http://localhost:5000/api/user/";
+const API_URL = "https://api.dinestx.com/api/user/";
+// const API_URL = "http://localhost:5000/api/user/";
 
 export const checkAuth = createAsyncThunk("auth/checkAuth", async (_, { rejectWithValue, dispatch }) => {
     try {
