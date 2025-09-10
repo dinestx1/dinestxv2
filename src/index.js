@@ -1,5 +1,5 @@
 // import http from 'http';
-import app from './app.js';
+import { app } from './app.js';
 import connectDB from './db/index.js';  // Your DB connection
 import dotenv from 'dotenv';
 

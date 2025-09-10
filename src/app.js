@@ -1,12 +1,23 @@
 import express from 'express';
- import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
 import userRoutes from './routes/userRoutes.js'; 
+import passport from 'passport';
+import { createServer } from 'http';
+
 
 const app = express();
+const server=createServer(app)
+app.set("trust proxy",true)
 
-app.use(cors())
-
-
+app.use(passport.initialize())
+app.use(cookieParser())
+app.use(cors({
+    origin:true,
+    credentials:true,
+    exposeHeaders:["set-cookie"]
+}
+));
 app.use(express.json());
 
 // Advisor routes
@@ -22,4 +33,4 @@ app.get('/', (req, res) => {
 });
 
 // Change module.exports to export default
-export default app;  // Use default export
+export {app,server};  // Use default export
