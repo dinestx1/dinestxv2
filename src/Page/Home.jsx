@@ -456,7 +456,7 @@ function Home() {
               <div className="w-full max-w-md flex justify-center">
                 <div className="inline-block border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg px-[14px] py-[6px]">
                   <p className="text-gray-300 font-outfit text-sm text-center whitespace-nowrap">
-                    Services
+                    Why Us ?
                   </p>
                 </div>
               </div>
@@ -858,7 +858,7 @@ function Home() {
 
 
       {/* Comparison */}
-      <div className="relative isolate overflow-hidden bg-black items-center justify-center pt-24 hidden lg:flex md:flex">
+      <div className="relative isolate overflow-hidden bg-black items-center justify-center pt-24 flex md:flex">
         <Reveal>
           <section className="mx-auto h-full max-w-[90vw] animate-fadeIn flex justify-center">
             <div className="w-full max-w-screen-xl px-4 flex flex-col items-center justify-center ">
@@ -873,59 +873,70 @@ function Home() {
               </div>
 
               {/* CARD */}
-              <div className="w-full flex flex-col items-center py-11 gap-8">
+              <div className="w-full flex flex-col  py-11 gap-8">
                 {/* Comparison Header */}
-                <div className="flex w-full max-w-[980px] px-4 md:px-10 gap-10">
-                  {/* With Dinestx */}
-                  <div className="w-1/2 flex items-center gap-2">
-                    <Smile className="text-black fill-green-600 w-[28px] h-[28px]" />
-                    <p className="text-green-600 font-outfit text-base md:text-lg">With Dinestx:</p>
-                  </div>
-                  {/* Without Dinestx */}
-                  <div className="w-1/2 flex items-center gap-2">
-                    <Frown className="text-black fill-red-600 w-[28px] h-[28px]" />
-                    <p className="text-red-600 font-outfit text-base md:text-lg">Without Dinestx:</p>
-                  </div>
-                </div>
+         
+             <div className="flex flex-row w-full lg:max-w-[980px] px-1 md:px-10 gap-4 md:gap-10">
+
+    {/* With Dinestx - Use w-full on mobile, md:w-1/2 for larger screens */}
+    <div className="w-full md:w-1/2 flex items-center gap-2">
+        <Smile className="text-black fill-green-600 w-[28px] h-[28px]" />
+        <p className="text-green-600 font-outfit text-sm md:text-lg">With Dinestx</p>
+    </div>
+
+    {/* Without Dinestx - Use w-full on mobile, md:w-1/2 for larger screens */}
+    <div className="w-full md:w-1/2 flex items-center gap-2">
+        <Frown className="text-black fill-red-600 w-[28px] h-[28px]" />
+        <p className="text-red-600 font-outfit text-sm md:text-lg">Without Dinestx</p>
+    </div>
+
+</div>
 
                 {/* Comparison Cards */}
-                {comparisionData.props.items.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="w-full max-w-[980px] bg-white/5 rounded-3xl border border-white/10 p-6 md:p-8 text-white backdrop-blur-md shadow-lg relative"
-                  >
-                    {/* Background circle blur */}
-                    <div className="absolute w-36 h-5 bg-purple-400 top-1/2 right-10 blur-2xl" />
+               {comparisionData.props.items.map((item, idx) => (
+    <div
+        key={idx}
+        className="w-full max-w-[980px] bg-white/5 rounded-3xl border border-white/10 p-6 md:p-8 text-white backdrop-blur-md shadow-lg relative"
+    >
+        {/* Background circle blur */}
+        <div className="absolute w-36 h-5 bg-purple-400 top-1/2 right-10 blur-2xl" />
 
-                    {/* Content Flex */}
-                    <div className="relative z-10 flex">
-                      {/* With Dinestx */}
-                      <div className="w-1/2 pr-4 md:pr-8 flex flex-col gap-2">
-                        <div className="flex items-center gap-2 pb-3">
-                          {comparisionData.props.icon}
-                        </div>
-                        <p className="text-[20px] font-outfit text-gray-300 font-medium">{item.title}</p>
-                        <p className="text-[15px] font-outfit text-gray-400">{item.des}</p>
-                      </div>
+        {/* --- MODIFIED LINE --- */}
+        {/* Content Flex: Make it a column on mobile and a row on desktop. Add a gap for mobile stacking. */}
+        <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-0">
+            {/* With Dinestx */}
+            {/* --- MODIFIED LINE --- */}
+            {/* Make width responsive and remove right-padding on mobile */}
+            <div className="w-full md:w-1/2 md:pr-8 flex flex-col gap-2">
+                <div className="flex items-center gap-2 pb-3">
+                    {comparisionData.props.icon}
+                </div>
+                <p className="text-[20px] font-outfit text-gray-300 font-medium">{item.title}</p>
+                <p className="text-[15px] font-outfit text-gray-400">{item.des}</p>
+            </div>
 
-                      {/* Vertical Divider */}
-                      <div className="w-[1px] bg-white/20" />
+            {/* Vertical Divider */}
+            {/* --- MODIFIED LINE --- */}
+            {/* Hide the divider on mobile screens */}
+            <div className="hidden md:block w-[1px] bg-white/20" />
 
-                      {/* Without Dinestx */}
-                      <div className="w-1/2 pl-4 md:pl-8 flex flex-col gap-2">
-                        <div className="flex items-center gap-2 pb-3">
-                          {comparisionData.cons.icon}
-                        </div>
-                        <p className="text-[20px] font-outfit text-gray-300 font-medium">
-                          {comparisionData.cons.items[idx]?.title}
-                        </p>
-                        <p className="text-[15px] font-outfit text-gray-400">
-                          {comparisionData.cons.items[idx]?.des}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            {/* Without Dinestx */}
+            {/* --- MODIFIED LINE --- */}
+            {/* Make width responsive and remove left-padding on mobile */}
+            <div className="w-full md:w-1/2 md:pl-8 flex flex-col gap-2">
+                <div className="flex items-center gap-2 pb-3">
+                    {comparisionData.cons.icon}
+                </div>
+                <p className="text-[20px] font-outfit text-gray-300 font-medium">
+                    {comparisionData.cons.items[idx]?.title}
+                </p>
+                <p className="text-[15px] font-outfit text-gray-400">
+                    {comparisionData.cons.items[idx]?.des}
+                </p>
+            </div>
+        </div>
+    </div>
+))}
               </div>
 
 
@@ -936,68 +947,7 @@ function Home() {
       </div>
 
 
-      {/* Comparision Mobile View======================== */}
-      <div className="relative isolate overflow-hidden bg-black items-center justify-center pt-24  flex lg:hidden md:hidden">
-        <Reveal>
-          <section className="mx-auto h-full max-w-[100vw] animate-fadeIn flex justify-center">
-            <div className="w-full max-w-screen-xl px-4 flex flex-col items-center justify-center ">
-
-              {/* Tagline Section */}
-              <div className="w-full max-w-md flex justify-center">
-                <div className="inline-block border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg px-[14px] py-[6px]">
-                  <p className="text-gray-400 font-outfit text-sm text-center whitespace-nowrap">
-                    Comparison
-                  </p>
-                </div>
-              </div>
-
-              {/* CARD */}
-              <div className="w-full flex flex-col items-center py-11 gap-8">
-                {/* Comparison Cards */}
-                {comparisionData.props.items.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="w-full max-w-[980px] bg-white/5 rounded-3xl border border-white/10 p-6 md:p-8 text-white backdrop-blur-md shadow-lg relative"
-                  >
-                    {/* Background circle blur */}
-                    <div className="absolute w-36 h-5 bg-purple-400 top-1/2 right-10 blur-2xl" />
-
-                    {/* Content Flex */}
-                    <div className="relative z-10 flex flex-col gap-7">
-                      {/* With Dinestx */}
-                      <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2 pb-3">
-                          {comparisionData.props.icon}
-                        </div>
-                        <p className="text-[20px] font-outfit text-gray-300 font-medium">{item.title}</p>
-                        <p className="text-[15px] font-outfit text-gray-400">{item.des}</p>
-                      </div>
-
-                      <div className="h-[1px] bg-white/20" />
-
-                      {/* Without Dinestx */}
-                      <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2 pb-3">
-                          {comparisionData.cons.icon}
-                        </div>
-                        <p className="text-[20px] font-outfit text-gray-300 font-medium">
-                          {comparisionData.cons.items[idx]?.title}
-                        </p>
-                        <p className="text-[15px] font-outfit text-gray-400">
-                          {comparisionData.cons.items[idx]?.des}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-
-
-            </div>
-          </section>
-        </Reveal>
-      </div>
+ 
 
 
 
@@ -1068,7 +1018,7 @@ function Home() {
   
 
       {/* Name + Role */}
-      <div className="text-center ">
+      <div className="text-left ">
         <h3 className="font-semibold text-white text-sm lg:text-lg">{member.name}</h3>
         <p className="text-xs lg:text-sm text-indigo-400">{member.role}</p>
       </div>

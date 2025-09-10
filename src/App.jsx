@@ -2,12 +2,19 @@ import { useState, useEffect } from 'react';
 import { useLocation, Outlet} from 'react-router-dom';
 import { Floating, Footer, Header, Logo} from './components';
 import ScrollTop from './components/ScrollTop';
-
+import { useDispatch } from 'react-redux';
+import { checkAuth } from './store/slices/authSlice';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const dispatch=useDispatch()
+
   const location = useLocation();
 
+  useEffect(()=>{
+    dispatch(checkAuth())
+  },[dispatch])
+  
   useEffect(() => {
     const loadTimeout = setTimeout(() => {
       setLoading(false);

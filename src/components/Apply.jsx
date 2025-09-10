@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { useSelector } from 'react-redux';
+import { submitApplication } from '../store/slices/authSlice';
+import { useDispatch } from 'react-redux';
 // Mock service function for demonstration purposes
 const submitApply = async (formData) => {
   console.log("Submitting:", formData);
@@ -78,9 +80,11 @@ const CustomSelect = ({ name, options, value, onChange, placeholder }) => {
 
 
 function Apply() {
-  const [loading, setLoading] = useState(false);
+
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const dispatch = useDispatch();
+  const { loading, applicationStatus, error } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -116,36 +120,25 @@ function Apply() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg('');
-
-    // --- Form Validation ---
-    if (!formData.name || !formData.email || !formData.phoneNumber || !formData.profession || !formData.role) {
-        setErrorMsg('Please fill out all required fields.');
-        return;
-    }
-    if (formData.phoneNumber.length !== 10 || !/^\d{10}$/.test(formData.phoneNumber)) {
-      setErrorMsg('Phone number must be exactly 10 digits long.');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        setErrorMsg('Please enter a valid email address.');
-        return;
-    }
-
-    setLoading(true);
+    setErrorMsg("");
 
     try {
-      const response = await submitApply(formData);
-      if (response) {
+      const result = await dispatch(submitApplication(formData)).unwrap();
+
+      if (result.status === 201) {
         setIsSubmitted(true);
-        // Reset form after successful submission
-        setFormData({ name: '', email: '', phoneNumber: '', profession: '', role: '', portfolioLink: '', githubLink: '' });
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          profession: "",
+          role: "",
+          portfolioLink: "",
+          githubLink: "",
+        });
       }
-    } catch (error) {
-      console.error("Submission Error:", error);
-      setErrorMsg('Something went wrong. Please try again later.');
-    } finally {
-      setLoading(false);
+    } catch (err) {
+      setErrorMsg(err.message || "Failed to submit application");
     }
   };
 
@@ -190,7 +183,7 @@ function Apply() {
                           onChange={handleChange}
                           className="h-12 border border-gray-700 bg-gray-900/50 text-white rounded-lg px-4 w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                           required
-                          placeholder='e.g., Jane Doe'
+                          placeholder='Your Full Name'
                         />
                       </div>
   

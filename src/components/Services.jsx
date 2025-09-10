@@ -383,10 +383,10 @@ function Services() {
 
 
         {/* 4th Section */}
-     <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/70 via-indigo-800/40 to-black py-28">
+     <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/70 via-indigo-800/10 to-black py-28">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <div className="absolute left-1/3 top-1/3 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-700/60 to-indigo-900/60 blur-[120px] animate-pulse"></div>
+        <div className="absolute left-1/3 top-1/3 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-700/20 to-indigo-900/60 blur-[120px] animate-pulse"></div>
         <div className="absolute right-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-blue-600/50 to-indigo-700/50 blur-[100px] animate-pulse-delay"></div>
       </div>
 
@@ -398,7 +398,7 @@ function Services() {
             Next-Gen Development
           </span>
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="animate-gradient bg-clip-text text-transparent bg-gradient-to-r from-indigo-100 via-indigo-300 to-indigo-500">
+            <span className="animate-gradient bg-clip-text text-transparent bg-gradient-to-r from-indigo-50 via-indigo-100 to-indigo-700">
               Innovative Web & App Solutions
             </span>
           </h1>
@@ -498,7 +498,7 @@ function Services() {
 
 
 
-        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black py-24">
+        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black py-24">
           {/* Subtle texture background */}
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80')] opacity-[0.02]" />
 

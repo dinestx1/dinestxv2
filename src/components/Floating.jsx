@@ -6,6 +6,10 @@ import Logo from "../assets/Logo.webp";
 import { ArrowUpRight, CalendarDays, ChevronsDownUp, Instagram, Linkedin } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { RiWhatsappFill } from "react-icons/ri";
+import { submitAppointment } from "../store/slices/authSlice";
+import { useToast } from "../context/toastContext";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Floating() {
 
@@ -84,6 +88,11 @@ function Floating() {
   const [days, setDays] = useState([]);
   const [selectedTime, setSelectedTime] = useState(null);
 
+  const dispatch=useDispatch()
+
+const {loading,error}=useSelector((state)=>state.auth)
+
+  const {showToast} = useToast();
   useEffect(() => {
     const next7 = getNext7Days();
     setDays(next7);
@@ -155,6 +164,41 @@ function Floating() {
     };
   }, []);
 
+
+
+
+
+const handleBooking = async () => {
+  if (!selectedCategoryType || !selectedCategory || !selectedDate || !selectedTime) {
+    showToast("Please select category, date and time before booking.", "error");
+    return;
+  }
+
+  try {
+ 
+
+  const response=await dispatch(
+    submitAppointment({
+      categoryType: selectedCategoryType,
+      category: selectedCategory,
+      date: selectedDate,
+      time: selectedTime,
+    })
+  ).unwrap();
+ 
+    if (response.status===201) {
+       showToast(response.message, "success");
+    setIsVisible(true)
+      
+    }
+
+   
+  } catch (err) {
+
+     showToast(err.message, "error");
+  } 
+};
+
   return (
     <>
     <div className="fixed z-10 bottom-8 right-5 lg:bottom-10 lg:right-10 p-1 flex flex-col items-end justify-end">
@@ -166,7 +210,7 @@ function Floating() {
     playsInline
     className="w-[112px] lg:w-32 md:w-32 rounded-lg"
   >
-    <source src="fox.webm" type="video/webm" />
+    <source src="fox1.webm" type="video/webm" />
   </video>
 
   {/* Existing Button */}
@@ -436,11 +480,17 @@ function Floating() {
                   </div>
 
                   {/* Book Button */}
-                  <motion.button
-                    whileHover={{ scale: 1 }}
-                    className="bg-blue-600 text-white font-outfit font-medium text-sm px-[18px] py-[14px] rounded-xl">
-                    Book Now
-                  </motion.button>
+                 <motion.button
+  whileHover={{ scale: 1 }}
+  disabled={loading}
+  onClick={handleBooking}
+  className={`bg-blue-600 text-white font-outfit font-medium text-sm px-[18px] py-[14px] rounded-xl ${
+    loading ? "opacity-50 cursor-not-allowed" : ""
+  }`}
+>
+  {loading ? "Booking..." : "Book Now"}
+</motion.button>
+
                 </div>
 
 

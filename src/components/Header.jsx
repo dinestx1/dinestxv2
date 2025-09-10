@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useGoogleLogin, googleLogout } from '@react-oauth/google';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, User2, Settings, LogOut } from 'lucide-react';
 import { BsGoogle } from 'react-icons/bs';
-import axios from 'axios'; // You might need to install this: npm install axios
-import { CgMenuRight } from "react-icons/cg";
 
-import { googleLogin } from '../services/userServices'; // Assuming this service sends user data to your backend
-import { Logo } from '.'; // Assuming you have Logo component/image
+import {useDispatch} from "react-redux";
+import { useSelector } from 'react-redux';
+
+import { googleLogin,getData, logoutUser } from '../store/slices/authSlice';
+import { CgMenuRight } from "react-icons/cg";
+import { Logo } from '.';
 
 function Header() {
-  const [user, setUser] = useState(null);
+
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
+
+  const dispatch=useDispatch()
+  const {user,isAuthenticated} = useSelector((state)=>state.auth)
 
   const navItems = [
     { to: '/', label: 'Home' },
@@ -29,58 +33,26 @@ function Header() {
   };
 
   const profileItems = [
-    { to: '/profile', label: 'Profile', icon: 'user' },
-    { to: '/settings', label: 'Settings', icon: 'settings' },
+   
     { label: 'Logout', onClick: handleLogout, icon: 'logout' },
   ];
 
-  // Load user from local storage on initial render
-  useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
+
 
   function handleLogout() {
-    googleLogout();
-    setUser(null);
-    localStorage.removeItem('user');
-    setIsProfileOpen(false);
-    setIsMobileMenuOpen(false);
+dispatch(logoutUser());
+
   };
 
   // This is the corrected Google Login handler
-  const login = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      try {
-        // 1. Use the access_token to fetch user's profile from Google
-        const userInfoResponse = await axios.get(
-          'https://www.googleapis.com/oauth2/v3/userinfo',
-          {
-            headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-          }
-        );
-
-        // 2. The userInfoResponse.data contains user's name, email, picture etc.
-        const userData = userInfoResponse.data;
-        
-        // Optional: Send this data to your backend for account creation/verification
-        // const res = await googleLogin(userData); // Your service might need adjustment
-        
-        // 3. Set user state and save to local storage
-        setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
-        setIsMobileMenuOpen(false);
-
-      } catch (error) {
-        console.error("Login failed:", error);
-      }
-    },
-    onError: () => {
-      console.error("Google login failed");
-    },
-  });
+  const handleGoogleLogin = async () => {
+    try {
+      
+      dispatch(googleLogin());
+    } catch (error) {
+      console.error("Google login failed:", error);
+    }
+  };
 
 
   const MobileMenu = () => (
@@ -90,7 +62,7 @@ function Header() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black/50 c"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <motion.div
@@ -98,7 +70,7 @@ function Header() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-gray-900/95 p-6 shadow-2xl"
+            className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-indigo-700/5 backdrop-blur-lg  p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside menu
           >
             <div className="flex justify-between items-center mb-10">
@@ -128,7 +100,7 @@ function Header() {
             {user ? (
                <div className="flex flex-col space-y-4">
                  <div className="flex items-center gap-3">
-                   <img src={user.picture} alt={user.name} className="w-12 h-12 rounded-full" />
+                   <img src={user.profile_picture} alt={user.name} className="w-12 h-12 rounded-full" />
                    <div>
                      <p className="font-semibold text-white">{user.name}</p>
                      <p className="text-sm text-gray-400">{user.email}</p>
@@ -144,7 +116,7 @@ function Header() {
                </div>
             ) : (
               <button
-                onClick={() => login()}
+                onClick={handleGoogleLogin}
                 className="w-full flex items-center justify-center gap-3 font-semibold text-white bg-indigo-600 px-4 py-3 rounded-lg z-40 hover:bg-indigo-700 transition"
               >
                 <BsGoogle />
@@ -210,7 +182,7 @@ function Header() {
                 {user ? (
                   <div>
                     <img
-                      src={user.picture}
+                      src={user.profile_picture}
                       alt={user.name}
                       onClick={() => setIsProfileOpen(!isProfileOpen)}
                       className="w-10 h-10 rounded-full cursor-pointer"
@@ -252,7 +224,7 @@ function Header() {
                   </div>
                 ) : (
                   <button
-                    onClick={() => login()}
+                    onClick={handleGoogleLogin}
                     className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     Login
