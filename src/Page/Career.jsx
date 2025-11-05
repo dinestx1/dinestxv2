@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Briefcase, Heart, Clock, GraduationCap } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import Apply from "../components/Apply";
 export default function Career() {
   const benefits = [
@@ -37,6 +38,14 @@ export default function Career() {
   ];
 
   return (
+    <div>
+  <Helmet>
+        <title>Career | Dinex</title>
+        {/* <meta name="description" content="Discover our top-notch digital services, including web & app development, graphic design, and social media management to grow your brand." /> */}
+        <link rel="canonical" href="https://dinestx.com/services" />
+        <meta name="keywords" content="Web Development, App Development, Graphic Design, Social Media Management, Digital Solutions" />
+      </Helmet>
+  
     <div className=" text-gray-800">
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
@@ -131,5 +140,6 @@ export default function Career() {
        <Apply/>
       </section>
     </div>
+      </div>
   );
 }

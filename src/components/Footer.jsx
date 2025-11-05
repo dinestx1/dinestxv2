@@ -1,4 +1,4 @@
-import { Logo, model } from '.'
+import { Logo2, model,Textlogo } from '.'
 import { ArrowUpRight} from "lucide-react";
 import { Instagram, Linkedin } from 'lucide-react';
 
@@ -80,8 +80,14 @@ function Footer() {
           href="/"
           className="text-2xl font-semibold font-museo flex items-center gap-3 text-white mb-6"
         >
-          <img src={Logo} alt="Logo" className="w-10 h-10" />
-          <span className="text-2xl">dinestx</span>
+          <img src={Logo2} alt="Logo" className="w-10 h-10" />
+           <div className="">
+    <img
+  className="h-8 w-auto object-cover drop-shadow-[0_4px_8px_rgba(67,56,202,0.5)]"
+  src={Textlogo}
+  alt="Logo"
+/>
+</div>
         </a>
         <p className="text-gray-400 text-sm leading-relaxed pr-6">
           Building Digital Nests for Limitless Growth.

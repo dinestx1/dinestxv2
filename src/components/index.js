@@ -8,8 +8,9 @@ import Services from "./Services";
 import Works from "../Page/Works";
 import Career from "../Page/Career";
 import ContactUs from "../Page/ContactUs";
-import Logo from '../assets/Logo.webp'
-import Logo2 from '../assets/Logo2.webp'
+import Logo from '../assets/colorlogo.webp'
+import Textlogo from '../assets/textlogo.webp'
+import Logo2 from '../assets/whitelogo.webp'
 import Floating from "./Floating";
 import Terminal from "./terminal";
 
@@ -39,6 +40,6 @@ import Timeline from "../assets/Timeline2.svg";
 import Team from "../assets/Team.svg"
 
 export{
-    Header,Footer,ContactUs,Blogs,Home,About,Services,Works,Career,Policy, Logo,Logo2, bg_Groups,
+    Header,Footer,ContactUs,Blogs,Home,About,Services,Works,Career,Policy, Logo,Logo2, bg_Groups,Textlogo,
      Integration,HoverButton, Floating, Terminal,social,graphics,app,graphics1,seo,web,di,apppost,beauty,juicy,testy,lusi,tour,model, BG_Graphics, Timeline, Team
 }

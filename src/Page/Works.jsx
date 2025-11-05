@@ -135,7 +135,7 @@ function Works() {
     <div>
 
       <Helmet>
-        <title>Works | Dinestx</title>
+        <title>Works | Dinex</title>
         <meta name="description" content="Explore our portfolio of successful projects, including a beauty and tailoring website and a real estate platform for our clients." />
         <meta name="keywords" content="Portfolio, Projects, Beauty Website, Tailoring Website, Real Estate Website, Dinestx Works" />
         <link rel="canonical" href="https://dinestx.com/works" />

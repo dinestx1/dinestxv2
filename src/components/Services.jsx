@@ -144,7 +144,7 @@ function Services() {
 
     <div >
       <Helmet>
-        <title>Services | Dinestx</title>
+        <title>Services | Dinex</title>
         <meta name="description" content="Discover our top-notch digital services, including web & app development, graphic design, and social media management to grow your brand." />
         <link rel="canonical" href="https://dinestx.com/services" />
         <meta name="keywords" content="Web Development, App Development, Graphic Design, Social Media Management, Digital Solutions" />

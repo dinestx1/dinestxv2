@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { MdContacts, MdOutlineEmail, MdCall } from "react-icons/md";
 import { RiWhatsappLine } from "react-icons/ri";
 import { motion } from "framer-motion";
-import Logo from "../assets/Logo.webp";
+import { Logo } from ".";
 import { ArrowUpRight, CalendarDays, ChevronsDownUp, Instagram, Linkedin } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { RiWhatsappFill } from "react-icons/ri";

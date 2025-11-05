@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BG_Graphics, Logo, Team, bg_Groups, HoverButton, Integration } from '../components'
+import { BG_Graphics, Logo2, Team, bg_Groups, HoverButton, Integration } from '../components'
 import Reveal from '../components/Reveal';
 import { motion } from "framer-motion";
 import { MessageSquare, PenTool, Code2, Rocket, TrendingUp, TrendingDown, Sparkle, Lightbulb, SquareCode, Workflow, Wrench, Smile, Frown } from 'lucide-react';
@@ -374,7 +374,7 @@ function Home() {
   return (
     <div className='select-none'>
       <Helmet>
-        <title>Dinestx</title>
+        <title>Dinex</title>
         <link rel="canonical" href="https://dinestx.com/home" />
         <meta name="description" content="Welcome to Dinestx. Explore our digital solutions for web & app development, graphic design, and more." />
       </Helmet>
@@ -715,7 +715,7 @@ function Home() {
             <div className="absolute w-[150px] h-[150px] rounded-full bg-indigo-600 blur-2xl z-0" />
             <div className="relative w-[100px] h-[100px] rounded-[36px] border-[16px] border-indigo-600 bg-indigo-600 z-10 flex items-center justify-center">
               <img
-                src={Logo}
+                src={Logo2}
                 alt="Staked"
                 className="w-[100px] h-[100px] object-contain"
               />
@@ -741,7 +741,7 @@ function Home() {
               <div className="absolute w-[150px] h-[150px] rounded-full bg-indigo-600 blur-2xl z-0" />
               <div className="relative w-[100px] h-[100px] rounded-[36px] border-[16px] border-indigo-600 bg-indigo-600 z-10 flex items-center justify-center">
                 <img
-                  src={Logo}
+                  src={Logo2}
                   alt="Staked Image"
                   className="w-[100px] h-[100px] object-contain z-20 bor"
                 />
