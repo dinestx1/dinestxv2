@@ -12,6 +12,7 @@ import Logo from '../assets/colorlogo.webp'
 import Textlogo from '../assets/textlogo.webp'
 import Logo2 from '../assets/whitelogo.webp'
 import Floating from "./Floating";
+import Floating1 from "./Floating1";
 import Terminal from "./terminal";
 
 import social from '../assets/social-p.webp'
@@ -40,6 +41,6 @@ import Timeline from "../assets/Timeline2.svg";
 import Team from "../assets/Team.svg"
 
 export{
-    Header,Footer,ContactUs,Blogs,Home,About,Services,Works,Career,Policy, Logo,Logo2, bg_Groups,Textlogo,
+    Header,Footer,ContactUs,Blogs,Home,About,Services,Works,Career,Policy, Logo,Logo2, bg_Groups,Textlogo,Floating1,
      Integration,HoverButton, Floating, Terminal,social,graphics,app,graphics1,seo,web,di,apppost,beauty,juicy,testy,lusi,tour,model, BG_Graphics, Timeline, Team
 }

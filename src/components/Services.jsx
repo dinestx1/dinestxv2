@@ -1,7 +1,6 @@
 
 import * as THREE from 'three'
 import {Suspense, useEffect, useState,useRef } from 'react'
-import Reveal from './Reveal';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {Cloud} from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -17,14 +16,14 @@ import { a as web } from '@react-spring/web'
 import { Rocket, BookmarkPlus, Smartphone, CodeSquare, Code2, Paintbrush, Image, Video, Share2, School, MessageSquareMore, GraduationCap, Sparkles, Workflow } from 'lucide-react';
 
 
-import { app, graphics, graphics1, seo, social, } from '.';
+import { app, graphics, seo, social, } from '.';
 import { Link } from 'react-router-dom';
 
 // 3D Shape Component
 function Model({ open, hinge, ...props }) {
   const group = useRef()
   // Load model
-  const { nodes, materials } = useGLTF('/scene.glb')
+  const { nodes, materials } = useGLTF('/scene1.glb')
   // Take care of cursor state on hover
   const [hovered, setHovered] = useState(false)
   useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered])
