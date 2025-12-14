@@ -25,7 +25,7 @@ router.get(
     googleLoginCallback
   );
 
-router.post('/me',protect,fetchuserdata);
+router.get('/me',protect,fetchuserdata);
 router.get("/check-auth",checkAuth)
 router.post("/logout",logout);
 

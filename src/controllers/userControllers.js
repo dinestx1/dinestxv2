@@ -45,12 +45,20 @@ export const fetchuserdata = async (req, res) => {
 
         // Return user data
         return res.status(200).json({
-            // id: user._id,
-            // email: user.email,
-            // name: user.name,
-            // phone: user.phone,
-            // profile_picture: user.profile_picture,
-            user
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            phone: user.phone,
+            profile_picture: user.profile_picture,
+            isVerified: user.isVerified,
+            eventRegister: user.eventRegister,
+            whatsappNumber: user.whatsappNumber,    
+            professionalEmail: user.professionalEmail,
+            Position: user.Position,
+            officeLocation: user.officeLocation,
+            brandName: user.brandName,
+            
+            
 
         });
     } catch (error) {
