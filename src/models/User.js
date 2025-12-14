@@ -41,6 +41,10 @@ const UserSchema = new mongoose.Schema({
   officeLocation:{
     type: String
   },
+  brandName:{
+    type: String
+  },
+  
   profile_picture: {
     type: String,
     default: null,

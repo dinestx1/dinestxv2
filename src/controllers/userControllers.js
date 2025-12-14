@@ -45,11 +45,13 @@ export const fetchuserdata = async (req, res) => {
 
         // Return user data
         return res.status(200).json({
-            id: user._id,
-            email: user.email,
-            name: user.name,
-            phone: user.phone,
-            profile_picture: user.profile_picture,
+            // id: user._id,
+            // email: user.email,
+            // name: user.name,
+            // phone: user.phone,
+            // profile_picture: user.profile_picture,
+            user
+
         });
     } catch (error) {
         console.error("Error fetching user data:", error);
@@ -60,7 +62,7 @@ export const fetchuserdata = async (req, res) => {
 
 export const logout = (req, res) => {
     return res
-    
+
         .clearCookie("i", {
             secure: true,
             httpOnly: true,
@@ -80,7 +82,7 @@ export const logout = (req, res) => {
 export const checkAuth = (req, res) => {
     const authToken = req.cookies.i;
     if (authToken) {
-    
+
       res.status(200).json({ isAuthenticated: true});
     } else {
       res.status(200).json({ isAuthenticated: false});

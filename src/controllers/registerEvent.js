@@ -1,9 +1,11 @@
 import User from '../models/User.js';
+import sendWelcome from '../utils/emails/welcomeEmail.js';
+import sendInvitationEmail from '../utils/emails/sendInvitation.js'
 
 
 export const registerEvent = async (req, res) => {
     const user = req.user;
-    const {name, whatsappNumber, professionalEmail, position, location} = req.body;
+    const {name, whatsappNumber,brandName,professionalEmail, position, officeLocation} = req.body;
 
 
     if(!user){
@@ -15,26 +17,30 @@ export const registerEvent = async (req, res) => {
             req.user._id,
             {
               eventRegister: true,
-              name,
-              whatsappNumber,
-              professionalEmail,
+              name: name,
+              whatsappNumber: whatsappNumber,
+              brandName: brandName  ,
+              professionalEmail:professionalEmail,
               Position: position,
-              officeLocation: location,
+              officeLocation: officeLocation,
             },
             { new: true, runValidators: true }
-          );
+          )
+          try {
+            await sendInvitationEmail({ email: user.email, username: user.name });
+            console.log("Welcome email sent to:", user.email);
+          } catch (mailError) {
+            console.error("Failed to send welcome email:", mailError);
+          }
+
 
           if (!updatedUser) {
             return res.status(404).json({ message: "User not found" });
           }
-
           return res.status(200).json({
-            message: "User registered successfully",
+            message: "Thank you for your interest. Your event pass has been sent to your registered email address. Please check your inbox.",
             user: updatedUser,
-          });
-        return res
-            .status(201)
-            .json({message: "User registered successful", user: userUpdate});
+          })
 
     } catch (error) {
         console.error("Error during user registration:", error);
