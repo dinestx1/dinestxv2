@@ -106,22 +106,7 @@ const dinexbBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAAAwCAYA
     }
   };
 
-  // --- LOADING STATE ---
-  // Show a loading indicator while auth status is being determined
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-        <p>Loading your ticket information...</p>
-      </div>
-    );
-  }
-
-  // If we reach this point, user is loaded and registered (due to useEffect logic)
-  // But strictly, if user is null (during brief transition before redirect), render nothing or loading
-  if (!user || !user.eventRegister) {
-      return null; 
-  }
-
+ 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#02042b] via-[#290849] to-[#960b35] flex flex-col items-center justify-center p-4">
 
