@@ -381,68 +381,94 @@ function Home() {
 
 
       {/* 1ST SECTION */}
-      <div className="relative isolate min-h-[50vh] lg:min-h-[50vh] md:min-h-[50vh] overflow-hidden bg-black">
-        {/* Blurred Background Images */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          {/* Top Background Image */}
-          <img
-            src={BG_Graphics}
-            className="absolute top-24 left-0 w-[30vw] md:w-[30vw] lg:w-[35vw] blur-3xl scale-125 z-20 backdrop-blur-3xl"
-          />
+    <div className="relative isolate min-h-[50vh] lg:min-h-[50vh] md:min-h-[50vh] overflow-hidden bg-black">
+    {/* Blurred Background Images */}
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Top Background Image */}
+        <img
+        src={BG_Graphics}
+        className="absolute top-24 left-0 w-[30vw] md:w-[30vw] lg:w-[35vw] blur-3xl scale-125 z-20 backdrop-blur-3xl"
+        />
 
-          {/* Bottom Background Image */}
-          <img
-            src={BG_Graphics}
-            alt="Bottom background"
-            className="absolute rotate-y-180 rotate-180 bottom-24 right-2 w-[30vw] md:w-[40vw] lg:w-[30vw] blur-3xl scale-125 z-20 backdrop-blur-3xl"
-          />
+        {/* Bottom Background Image */}
+        <img
+        src={BG_Graphics}
+        alt="Bottom background"
+        className="absolute rotate-y-180 rotate-180 bottom-24 right-2 w-[30vw] md:w-[40vw] lg:w-[30vw] blur-3xl scale-125 z-20 backdrop-blur-3xl"
+        />
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black backdrop-blur-3xl"></div>
-        </div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black backdrop-blur-3xl"></div>
+    </div>
 
-        <Reveal>
-          <section className="mx-auto h-full max-w-[100vw] animate-fadeIn flex justify-center">
-            <div className="w-full max-w-screen-xl px-4 flex flex-col items-center justify-center gap-9 py-52">
+    <Reveal>
+        <section className="mx-auto h-full max-w-[100vw] animate-fadeIn flex justify-center">
+        <div className="w-full max-w-screen-xl px-4 flex flex-col items-center justify-center gap-9 py-52">
 
-              {/* Tagline Section */}
-              <div className="w-full max-w-md flex justify-center">
-                <div className="inline-block border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg px-[14px] py-[6px]">
-                  <p className="text-gray-300 font-outfit text-sm text-center whitespace-nowrap">
-                    Dinestx by 8bitDevs – Your Website Partner
-                  </p>
-                </div>
-              </div>
-
-              {/* Text Section */}
-              <div className="w-full px-4 text-center space-y-5 flex flex-col items-center">
-
-                <p className="text-white font-outfit font-medium text-3xl md:text-4xl xl:text-5xl leading-tight">
-                  We Don't Just Build Websites We Weaponize <br />
-                  <span className="text-indigo-600 text-3xl font-outfit font-medium md:text-4xl xl:text-5xl">
-                    Brands For Domination.
-                  </span>
+            {/* Tagline Section */}
+            <div className="w-full max-w-md flex justify-center">
+            <div className="inline-block border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg px-[14px] py-[6px]">
+                <p className="text-gray-300 font-outfit text-sm text-center whitespace-nowrap">
+                Dinex by Debuggers inc. – Your Website Partner
                 </p>
+            </div>
+            </div>
+
+            {/* Text Section */}
+            <div className="w-full px-4 text-center space-y-5 flex flex-col items-center">
+
+            <p className="text-white font-outfit font-medium text-3xl md:text-4xl xl:text-5xl leading-tight">
+                We Don't Just Build Websites We Weaponize <br />
+                <span className="text-indigo-600 text-3xl font-outfit font-medium md:text-4xl xl:text-5xl">
+                Brands For Domination.
+                </span>
+            </p>
 
 
-                <p className="text-gray-400 font-outfit text-base max-w-md mx-auto leading-relaxed">
-                  We don't build websites. We design digital status symbols — rare, powerful, and built to convert.
-                </p>
+            <p className="text-gray-400 font-outfit text-base max-w-md mx-auto leading-relaxed">
+                We don't build websites. We design digital status symbols — rare, powerful, and built to convert.
+            </p>
 
-                {/* Contact Button */}
+            {/* Action Buttons Container */}
+            <div className="flex flex-col sm:flex-row items-center gap-5 mt-4">
+                
+                {/* Existing Button */}
                 <HoverButton
-                  label="Build Your Own"
-                  onClick={handleInternalRedirect}
-                  width="w-36"
-                  height="h-10"
-                  className="bg-blue-700 px-4 py-2 "
+                    label="Build Your Own"
+                    onClick={handleInternalRedirect}
+                    width="w-40"
+                    height="h-12"
+                    className="bg-blue-700"
                 />
-              </div>
+
+                {/* --- NEW REGISTER BUTTON (Founders Meetup Theme) --- */}
+                <button
+                    onClick={() => navigate('/founders-meetup')} 
+                    className="group relative w-auto px-4 h-12 rounded-lg overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(217,15,45,0.4)] hover:shadow-[0_0_35px_rgba(217,15,45,0.6)] hover:-translate-y-1"
+                >
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#d90f2d] to-[#960b35] group-hover:from-[#ff1436] group-hover:to-[#b00d3e] transition-colors duration-300"></div>
+                    
+                    {/* Glass Shine Effect */}
+                    <div className="absolute inset-0 bg-white/20 skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+
+                    {/* Text Content */}
+                    <span className="relative z-10 font-outfit font-bold text-white uppercase tracking-wider flex items-center justify-center gap-2 text-sm">
+                        Founders Meetup
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 transition-transform group-hover:translate-x-1">
+                            <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                        </svg>
+                    </span>
+                </button>
 
             </div>
-          </section>
-        </Reveal>
-      </div>
+
+            </div>
+
+        </div>
+        </section>
+    </Reveal>
+</div>
 
 
 

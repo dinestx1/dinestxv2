@@ -53,7 +53,23 @@ export const loginUser = createAsyncThunk("auth/login", async (data, { rejectWit
     try {
       
       const response = await axios.post(`${API_URL}send`,data, {  withCredentials: true });
-      return { status: response.status,message:response?.data.message };
+      return { status: response.status, message: response.data.message };
+
+
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Something went wrong");
+    }
+  });
+
+
+
+
+    export const registerEvent = createAsyncThunk("auth/registerEvent", async (formData, { rejectWithValue }) => {
+    try {
+      
+      const response = await axios.post(`${API_URL}register-event`,formData, {  withCredentials: true });
+      
+      return { status: response?.status,message:response?.data?.message };
 
     } catch (err) {
       return rejectWithValue(err.response?.data || "Something went wrong");
@@ -106,12 +122,15 @@ export const submitAppointment = createAsyncThunk(
     }
   }
 );
+
+
+
   const initialState = {
     user: null,
     isAuthenticated: false,
     loading:false,
     message: null,
- 
+    bookingStatus: null,
     error: null,
       applicationStatus: null,
     errordata:null
@@ -235,6 +254,24 @@ export const submitAppointment = createAsyncThunk(
       state.error = action.payload;
     })
 
+
+
+    .addCase(registerEvent.pending, (state) => {
+      state.loading = true;
+      state.message = null;
+      state.error = null;
+    })
+    .addCase(registerEvent.fulfilled, (state, action) => {
+      state.loading = false;
+     state.message = action.payload.message;
+ // "Application submitted successfully"
+   
+    })
+    .addCase(registerEvent.rejected, (state, action) => {
+      state.loading = false;
+      state.message = null;
+      state.error = action.payload;
+    })
 
        .addCase(submitAppointment.pending, (state) => {
         state.loading = true;
