@@ -19,7 +19,28 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     sparse: true
   }, // For Google login
-  phone: { type: Number, unique: true, sparse: true,default: undefined },
+  phone: {
+    type: Number,
+    unique: true,
+    sparse: true,
+    default: undefined
+  },
+  whatsappNumber:{
+    type: Number
+  },
+  eventRegister:{
+    type: Boolean,
+    default: false
+  },
+  professionalEmail:{
+    type: String,
+  },
+  Position:{
+    type: String,
+  },
+  officeLocation:{
+    type: String
+  },
   profile_picture: {
     type: String,
     default: null,

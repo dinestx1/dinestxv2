@@ -7,6 +7,9 @@ import {protect} from '../middleware/authMiddleware.js'
 import { logout,fetchuserdata,checkAuth} from '../controllers/userControllers.js';
 import "../config/passport.js"
 import { getUserAppointments,bookAppointment } from '../controllers/bookAppointment.js';
+import { registerEvent } from '../controllers/registerEvent.js';
+
+
 const router=express.Router()
 
 
@@ -15,7 +18,7 @@ router.get(
     "/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
   );
-  
+
   router.get(
     "/google/callback",
     passport.authenticate("google", { failureRedirect:process.env.FRONTEND_URL,session: false }),
@@ -29,5 +32,9 @@ router.post("/logout",logout);
 
 
 router.post("/book", protect, bookAppointment);       // Book appointment
-router.get("/get-bookings", protect, getUserAppointments);  
-export default router
+router.get("/get-bookings", protect, getUserAppointments); // Appointment
+router.post("/register-event", protect, registerEvent );
+
+
+
+export default router;
