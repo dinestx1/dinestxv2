@@ -3,7 +3,7 @@ import User from '../models/User.js';
 
 export const registerEvent = async (req, res) => {
     const user = req.user;
-    const {whatsappNumber, professionalEmail, position, location} = req.body;
+    const {name, whatsappNumber, professionalEmail, position, location} = req.body;
 
 
     if(!user){
@@ -14,7 +14,8 @@ export const registerEvent = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(
             req.user._id,
             {
-             eventRegister: true,
+              eventRegister: true,
+              name,
               whatsappNumber,
               professionalEmail,
               Position: position,
@@ -34,7 +35,7 @@ export const registerEvent = async (req, res) => {
         return res
             .status(201)
             .json({message: "User registered successful", user: userUpdate});
-            
+
     } catch (error) {
         console.error("Error during user registration:", error);
         return res.status(500).json({ message: "Internal server error" });
