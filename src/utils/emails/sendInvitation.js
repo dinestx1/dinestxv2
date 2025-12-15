@@ -3,12 +3,11 @@ import { sendMail } from "../sendMail.js";
 const sendInvitationEmail = async ({
   email,
   username,
-  eventName,
   inviteLink,
 }) => {
   return sendMail({
     to: email,
-    subject: `Invitation to ${eventName}`,
+    subject: `Congratulations! Your pass is confirmed - Founders Meetup Gurugram`,
     html: `<!DOCTYPE html>
     <html lang="en">
     <body style="margin:0; padding:0; background-color:#0b1220;">
