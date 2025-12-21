@@ -441,26 +441,7 @@ function Home() {
                     className="bg-blue-700"
                 />
 
-                {/* --- NEW REGISTER BUTTON (Founders Meetup Theme) --- */}
-                <button
-                    onClick={() => navigate('/founders-meetup')} 
-                    className="group relative w-auto px-4 h-12 rounded-lg overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(217,15,45,0.4)] hover:shadow-[0_0_35px_rgba(217,15,45,0.6)] hover:-translate-y-1"
-                >
-                    {/* Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#d90f2d] to-[#960b35] group-hover:from-[#ff1436] group-hover:to-[#b00d3e] transition-colors duration-300"></div>
-                    
-                    {/* Glass Shine Effect */}
-                    <div className="absolute inset-0 bg-white/20 skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
-
-                    {/* Text Content */}
-                    <span className="relative z-10 font-outfit font-bold text-white uppercase tracking-wider flex items-center justify-center gap-2 text-sm">
-                        Founders Meetup
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 transition-transform group-hover:translate-x-1">
-                            <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                        </svg>
-                    </span>
-                </button>
-
+                
             </div>
 
             </div>

@@ -24,9 +24,9 @@ const router = createBrowserRouter(
       <Route path='policy' element={<Policy />} />
       <Route path='about' element={<About />} />
       <Route path="products" element={<ProductsPage/>}/>
-      <Route path="founders-meetup" element={ <RegistrationForm/> }/>
+      {/* <Route path="founders-meetup" element={ <RegistrationForm/> }/> */}
       <Route path="*" element={<div className='min-h-screen flex items-center justify-center'>404 Not Found</div>}/>
-      <Route path="/ticket" element={<TicketGenerator/>}/>
+      {/* <Route path="/ticket" element={<TicketGenerator/>}/> */}
     </Route>
   )
 )
