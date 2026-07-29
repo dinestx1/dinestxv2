@@ -101,7 +101,7 @@ const ContactUs = () => (
                       </div>
                       <div className="space-y-3 w-full">
                         <a
-                          href="https://wa.me/919341786519"
+                          href="https://wa.me/message/AEMTGH2KK5QMC1"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block w-full px-4 py-3 rounded-xl border border-green-400/30 bg-green-400/10 text-gray-200 hover:bg-green-400/20 hover:text-white transition-all text-center font-medium"
